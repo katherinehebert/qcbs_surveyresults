@@ -87,28 +87,24 @@ symposium = as.data.frame(table(q8_12[,3]))
 network = as.data.frame(table(q8_12[,4]))
 leadership = as.data.frame(table(q8_12[,5]))
 
-# plotly donut chart??
-
 bar_q8_12 = function(df){
   # convert to factor to control order of labels
   df$Var1 = impact_levels(df$Var1)
   # plot
   ggplot(df, aes(x = Var1, y = Freq)) + 
-    geom_segment(aes(xend="Neutral"), color="grey") +
-    geom_point( color="orange", size=4) +
-    #geom_bar(aes(x = Var1, y = Freq, fill = Var1), stat = "identity") +
+    geom_bar(aes(x = Var1, y = Freq, fill = Var1), stat = "identity") +
     labs(x = "", y = "")+
     coord_flip() +
     scale_fill_brewer() +
     theme_classic() + theme(legend.position = "none") 
 }
 
-(rworkshops.p = bar_q8_12(rworkshops) + theme(legend.position = "top"))
+(rworkshops.p = bar_q8_12(rworkshops) + labs(title = q8_12_question) + 
+    theme(legend.position = "top", legend.title = element_blank()))
 (trainings.p = bar_q8_12(trainings))
 (symposium.p = bar_q8_12(symposium))
 (network.p = bar_q8_12(network))
 (leadership.p = bar_q8_12(leadership) + labs(y = "Members"))
-
 rworkshops.p / trainings.p / symposium.p / network.p / leadership.p
 
 # questions to deal with:
