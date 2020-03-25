@@ -63,7 +63,7 @@ time$length = factor(time$length, levels = c("< 1 an/year",
                     geom_bar(aes(x = length, y = qty, fill = length), stat = "identity") +
                     labs(x = "Time as member", y = "Student members") +
                     coord_flip() +
-                    scale_fill_manual(values = c("#428dc9","#3369a5", "#264780", "#19275c")) +
+                    scale_fill_manual(values = nice_palette) +
                     theme_classic())
 
 ## time since member ----
@@ -132,12 +132,13 @@ ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) +
 resdev = as.data.frame(table(responses[,questions[14]]))
 missinglevels = data.frame(Var1 = factor(c(1,2)), Freq = c(0,0))
 resdev = rbind(missinglevels, resdev)
-
-(resdev.p = ggplot(resdev, aes(x = Var1, y = Freq)) + 
-  geom_bar(aes(x = Var1, y = Freq, fill = Var1), stat = "identity") +
+ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) + 
+  geom_bar(position="fill", stat="identity") 
+(resdev.p = ggplot(resdev, aes(x = Var1, y = Freq, fill = Var1)) + 
+  geom_bar(stat = "identity") +
   labs(x = "", y = "", title = questions[14])+
   coord_flip() +
-    scale_fill_manual(values = rev(div_palette)) +
+    scale_fill_manual(values = rev(nice_palette)) +
     theme_classic() + theme(legend.position = "none"))
 
 # awards making opportunities accessible ----
