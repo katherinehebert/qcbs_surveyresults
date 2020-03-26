@@ -5,6 +5,7 @@ require(tidyverse)
 require(waffle)
 require(extrafont)
 require(ggsci)
+require(wordcloud2)
 
 # note: percentages?
 
@@ -15,40 +16,38 @@ questions <- colnames(responses)
 
 # set plotting parameters
 wafflerows = 12
-wafflesize = .3
+wafflesize = 7
 div_palette = c("#31608f","#8a9ab4","#dadada","#d78b79","#bd3520")
 div_palette = c("#2f96c2","#98bdd4","#e5e5e5","#db8d8c","#bd283c")
 nice_palette = c("#20115c","#7f0066","#c81b58","#f45e3a","#ffa600")
   
-## come back to this to make it people icons!
-
 # # get fonts for pictochart
-# # downloaded free FontAwesome fonts (for web) and installed .ttf files
-# font_import()
-# # check that Font Awesome is imported
-# fonts()[grep("Awesome", fonts())]
-# # this should be fine for Mac OSX
-# loadfonts()
+# # downloaded free FontAwesome fonts (for web) VERSION 4 and installed .ttf file
 font_import()
-loadfonts()       #Register fonts for Windows bitmap output
-fonts() 
+# # check that Font Awesome is imported
+fonts()[grep("Awesome", fonts())]
+loadfonts()
 
 ## signatures ----
 
 # summarise results
 signatures = unname(table(responses[,questions[20]]))
-waffle(signatures, rows = wafflerows, 
+waffle(signatures, rows = wafflerows, use_glyph = "male",
          title = paste(signatures, "student members have signed"), 
          colors = c("#15105c"), 
          size = wafflesize, legend_pos = "none")
 
 ## level of study ----
-studylevels = table(responses[,questions[4]])
-(levelofstudy.p = studylevels %>% 
-                  waffle(rows = wafflerows, 
-                         title = paste("Study level of signatures"), 
-                         colors = c("#15105c","#c61558","#ffa600"), 
-                         size = wafflesize))
+studylevels = as.data.frame(table(responses[,questions[4]]))
+missingsignatures = data.frame(Var1 = factor("Other"), 
+                               Freq = c(signatures - sum(studylevels$Freq)))
+temp = t(rbind(studylevels, missingsignatures))
+studylevels = as.numeric(temp[2,])
+names(studylevels) = temp[1,]
+(levelofstudy.p = waffle(studylevels, rows = wafflerows, use_glyph = "male",
+                         title = paste(signatures, "student members have signed"), 
+                         colors = c(nice_palette[c(1,3,5)],"grey"), 
+                         glyph_size = wafflesize))
 
 ## time as member ----
 
@@ -122,7 +121,8 @@ ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) +
   labs(y = "Proportion of student members (%)", 
        x = "QCBS activities / Activités du CSBQ",
        title = q8_12_question) +
-  scale_fill_manual(values = rev(nice_palette[c(1,2,4,5)])) + 
+  scale_fill_manual(values = c(nice_palette[c(4,3)], nice_palette[c(2,1)]))+
+    #rev(nice_palette[c(1,2)]),"grey",rev(nice_palette[4])))) + 
   theme_classic() +
   theme(legend.title = element_blank()) +
   coord_flip()
@@ -161,4 +161,39 @@ na.omit(responses[,questions[13]])
 na.omit(responses[,questions[16]])
 na.omit(responses[,questions[18]])
 na.omit(responses[,questions[19]])
+
+# what are you doing now ----
+
+r7 = na.omit(responses[,questions[7]])
+# change all to lower case
+r7 = apply(r7,2,tolower)
+r7 = as.vector(r7)
+
+# clean up responses - many current students (msc and phd) + post-docs answered this
+r7 = r7[-c(grep("étud", r7, ignore.case = TRUE),
+      grep("etud", r7, ignore.case = TRUE),
+      grep("student", r7, ignore.case = TRUE),
+      grep("phd", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("msc", r7, ignore.case = TRUE),
+      grep("m.sc.", r7, ignore.case = TRUE),
+      grep("maîtrise", r7, ignore.case = TRUE),
+      grep("maitrise", r7, ignore.case = TRUE),
+      grep("thesis", r7, ignore.case = TRUE),
+      grep("thèse", r7, ignore.case = TRUE),
+      grep("doc", r7, ignore.case = TRUE),
+      grep("master", r7, ignore.case = TRUE),
+      grep("postdoc", r7, ignore.case = TRUE),
+      grep("post-doc", r7, ignore.case = TRUE),
+      grep("i have never been a qcbs member", r7, ignore.case = TRUE),
+      grep("still a member!!!", r7, ignore.case = TRUE),
+      grep("rédaction", r7, ignore.case = TRUE))]
+# remove duplicated entry for "professionnel de recherche en phytoprotection"
+r7 = r7[-9]
+# plot as word cloud
+r7_df = as.data.frame(table(r7))
+wordcloud2(r7_df)
+
+
 
