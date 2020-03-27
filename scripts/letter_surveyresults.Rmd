@@ -1,5 +1,5 @@
 ---
-title: "Soutien étudiant au CSBQ<br>Student support for the QCBS"
+title: <center> <h1>Soutien étudiant au CSBQ<br>Student support for the QCBS</h1> </center>
 output: html_document
 ---
 
@@ -31,7 +31,6 @@ Le CSBQ contribue à faire du Québec un chef de file en alliant Science et Poli
  
 ------
 
- 
 ## Letter of support to the QCBS [EN]
 
 *In response to the FRQNT's decision to potentially withdraw its financial support from the QCBS, Gabrielle Rimok (Concordia), Mariane Daneau-Lamoureux (UQAM/McGill), and Maëlle Tripon (UdeS), with help from Audrey Sigouin (UdeS), Katherine Hébert (UdeS) and students from the 2019 QCBS Biodiversity Science course, prepared a support letter to accompany the QCBS' renewal application.*
@@ -88,7 +87,7 @@ fonts()[grep("Awesome", fonts())]
 loadfonts()
 ```
 
-```{r, echo = FALSE, fig.width = 10, message=FALSE}
+```{r, echo = FALSE, fig.width = 10, message=FALSE, warning="FALSE"}
 ## Q4 level of study ----
 signatures = unname(table(responses[,questions[20]]))
 studylevels = as.data.frame(table(responses[,questions[4]]))
@@ -264,6 +263,21 @@ kable(q13) %>% kable_styling(bootstrap_options = c("striped", "hover", "condense
 ------
 
 ### L'importance du soutien financier offert par le CSBQ
+
+```{r number of awards, echo = FALSE, fig.align="center", fig.width = 5}
+# wrangle data
+n_awards = table(responses[,questions[15]]) %>% as.data.frame() 
+# set answer order for axis
+n_awards$Var1 = factor(n_awards$Var1, levels = c("0","1","2","3 or more"))  
+# plot!
+(n_awards.p = ggplot(data = n_awards) + 
+  geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Nombre de bourses reçu", values = c("lightgrey","#00a86e","#008682","#00627c")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10)))
+```
+
 
 Une majorité des étudiants **(85%)** sont d'accord ou fortement d'accord que les bourses du CSBQ leur ont permis d'accéder à des opportunités qui seraient **autrement impossibles**.
 
