@@ -229,4 +229,6 @@ wordcloud2(r18_freqs_df, color = "black")
 # questions to deal with:
 knitr::kable(na.omit(responses[,questions[16]]))
 
+# Q15 - number of bourses
+na.omit(responses[,questions[15]])
 
