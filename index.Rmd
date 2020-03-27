@@ -1,0 +1,379 @@
+---
+title: <center> <h1>Soutien étudiant au CSBQ<br>Student support for the QCBS</h1> </center>
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lettre de soutien au CSBQ [FR]
+
+*En réponse à la décision du FQRNT de potentiellement retirer son support financier du CSBQ, Gabrielle Rimok (Concordia), Mariane Daneau-Lamoureux (UQAM/McGill), et Maëlle Tripon (UdeS), avec l'aide d'Audrey Sigouin (UdeS), Katherine Hébert (UdeS) et des étudiants du cours intensif 2019 en science de la biodiversité du CSBQ, ont préparé une lettre de soutien (ci-dessous) pour accompagner la demande de refinancement du CSBQ.*
+
+Le FRQNT (Fonds de Recherche du Québec – Nature et Technologies) a récemment réduit son soutien financier du Centre de la Science de la Biodiversité du Québec (CSBQ) et demande une justification de la valeur stratégique du centre, de sa recherche, et de ses formations. À la lumière de cette situation, nous, les étudiants.es, post-doctorants.es et chercheurs.euses d'une variété de disciplines liées aux sciences de la biodiversité, tenons à exprimer notre soutien au CSBQ.
+
+La mission du Fonds de Recherche du Québec – Nature et Technologies (FRQNT) est telle que:
+
+- *promouvoir et fournir un support financier : pour la recherche dans les domaines des sciences naturelles; pour la dissémination du savoir scientifique dans les domaines de recherche associés aux sciences naturelles; pour la formation des chercheurs à travers l’obtention de bourses pour étudiants gradués et post-gradués*;
+
+- *créer tous les partenariats nécessaires, en particulier avec les universités, les collèges et l'industrie, les ministères et les organismes publics et privés concernés*.
+
+Depuis ses 10 ans de création, le CSBQ est un pôle de recherche multidisciplinaire qui rassemble des étudiants.es et chercheurs.euses de tout le Québec, du Canada et de l’étranger. Le CSBQ joue un rôle essentiel dans la formation de personnel hautement qualifié en sciences de la biodiversité par l’entremise de programmes de formation multiples et variés. Ces derniers présentent des opportunités uniques de réseautage entre étudiants.es gradués.ées, post-doctorants.es et chercheurs.euses internationalement reconnus dans leur domaine et affiliés.ées au CSBQ. La création de ces liens est primordiale à l’établissement de relations interpersonnelles et professionnelles entre les différents acteurs impliqués dans les sciences de la biodiversité.  
+
+Le CSBQ vise à assurer le partage des connaissances et la multidisciplinarité dans une optique de gestion et de conservation de toute la biodiversité au Québec et à l’international. Le CSBQ offre de nombreuses activités de formation tels que des groupes de travail, séminaires, symposiums et divers cours de niveau avancé, qui sont pour nous, étudiants.es gradués.ées et post-doctorants.es, un avantage indéniable dans l’acquisition de compétences avancées en statistiques et en communication scientifique. Les aptitudes développées grâce au CSBQ sont fondamentales dans la poursuite de nos carrières académiques et professionnelles.
+
+Le CSBQ a à cœur l’accessibilité de ses formations sans discrimination.  Le CSBQ assure une éducation de haute qualité pour tous.tes en retirant les barrières financières, linguistiques et mobiles qui pourraient empêcher une personne d’y avoir accès. Les événements de partage de connaissances et de communication scientifique permettent aux étudiants.es d’en apprendre davantage sur les nombreux domaines de recherche englobés par le thème de la biodiversité et sur les multiples acteurs impliqués, tant au niveau académique que social et juridique.
+
+Le CSBQ contribue à faire du Québec un chef de file en alliant Science et Politique, permettant l’utilisation des meilleures pratiques de gestion et de conservation de la biodiversité. Les collaborations établies par le CSBQ entre chercheurs.euses, professionels.elles, et décideurs.euses politiques ont créé une communauté soutenant la recherche et des formations de calibre mondial au Québec. Un objectif central au CSBQ est de former la prochaine génération d’experts de la biodiversité au Québec et de faire rayonner le Québec au Canada et à l’étranger.
+
+ C’est pour l'ensemble des raisons mentionnées ci-dessus que nous demandons le maintien du support financier du programme de regroupements stratégiques du FRQNT envers le CSBQ.
+ 
+------
+
+## Letter of support to the QCBS [EN]
+
+*In response to the FRQNT's decision to potentially withdraw its financial support from the QCBS, Gabrielle Rimok (Concordia), Mariane Daneau-Lamoureux (UQAM/McGill), and Maëlle Tripon (UdeS), with help from Audrey Sigouin (UdeS), Katherine Hébert (UdeS) and students from the 2019 QCBS Biodiversity Science course, prepared a support letter to accompany the QCBS' renewal application.*
+
+The FRQNT (Front de Recherche du Québec - Nature et Technologies) has reduced financial support to the QCBS (Québec Centre for Biodiversity Science) and has requested a justification for the strategic value of the centre, its research, and training. In light of this, we, students, postdoctoral fellows and researchers from a variety of disciplines working in the biodiversity sciences, want to express our strongest support for the QCBS.
+
+The mission of the Fonds de Recherche du Québec – Nature et Technologies (FRQNT) is as follows: 
+
+- *to promote and provide financial support: for research in the fields of natural sciences; for the dissemination of scientific knowledge in fields of research relating to natural sciences; for the training of researchers through scholarships for graduate and postgraduate students*;
+
+- *to create any necessary partnerships, in particular with universities, colleges, and industry and the government departments and public and private bodies concerned*.
+
+Since its inception 10 years ago, the QCBS has provided a multidisciplinary research pole that has brought together students and researchers from all over Québec, Canada, and abroad. The QCBS plays an essential role in the training of highly qualified personnel in biodiversity sciences through multiple and varied training programs. This has provided unique networking opportunities between graduate students, postdoctoral fellows and researchers internationally recognized in their field and affiliated with the QCBS. The creation of such links is primordial for the establishment of interpersonal and professional relationships between the various researchers and actors in the field of biodiversity sciences.
+
+The QCBS aims to ensure knowledge sharing and multidisciplinarity in the perspective of biodiversity management and conservation in Québec and abroad. The QCBS offers many training activities, such as working groups, seminars, symposia and various advanced level courses, which are for us, graduate and postdoctoral students, an opportunity to acquire advanced skills in statistics and scientific communication, among many others. The skills developed through the QCBS are fundamental to the pursuit of our academic and professional careers.
+
+The QCBS is committed to making its training accessible to all and without discrimination. The QCBS provides high-quality education for all by removing financial, linguistic, and mobility barriers that would otherwise prevent a person from having access to it. Equity and diversity is a key focus for the QCBS. Knowledge sharing and training in scientific communication allow students to learn more about the many areas of research encompassed by the field of biodiversity science and the multiple actors in academia, and the public and private sectors of society.
+
+The QCBS is providing leadership, both nationally and internationally, by bridging the gap between science and policy, and via the application of best practices for biodiversity management and conservation. The collaborations established by the QCBS among researchers, practitioners, and policymakers have created a community, supporting world-class research and training in Québec. A central mission of the QCBS is to train the next generation of biodiversity scientists in Québec and foster the leadership role Québec is providing in Canada and abroad.
+
+It is for all of the above-mentioned reasons that we urge the strategic cluster program of the FRQNT to continue its funding for the QCBS.
+
+------
+
+```{r load packages and survey results, include = FALSE}
+# load packages
+require(tidyverse)
+require(waffle)
+require(extrafont)
+require(patchwork)
+require(ggsci)
+require(tidytext)
+require(wordcloud2)
+require(knitr)
+require(kableExtra)
+
+# import survey responses
+responses <- read_csv("~/Documents/GitHub/qcbs_surveyresults/data/responses.csv")
+# extract questions
+questions <- colnames(responses)
+```
+
+```{r set up plot parameters and font, include = FALSE}
+# set plotting parameters
+wafflerows = 9
+wafflesize = 7
+nice_palette = c("#20115c","#7f0066","#c81b58","#f45e3a","#ffa600")
+
+# # get fonts for pictochart
+# # downloaded free FontAwesome fonts (for web) VERSION 4 and installed .ttf file
+font_import()
+# # check that Font Awesome is imported
+fonts()[grep("Awesome", fonts())]
+loadfonts()
+```
+
+```{r, echo = FALSE, fig.width = 10, message=FALSE, warning="FALSE"}
+## Q4 level of study ----
+signatures = unname(table(responses[,questions[20]]))
+studylevels = as.data.frame(table(responses[,questions[4]]))
+missingsignatures = data.frame(Var1 = factor("Pas de réponse"), 
+                               Freq = c(signatures - sum(studylevels$Freq)))
+temp = t(rbind(studylevels, missingsignatures))
+studylevels = as.numeric(temp[2,])
+names(studylevels) = temp[1,]
+(levelofstudy.p = waffle(studylevels, rows = wafflerows, use_glyph = "male",
+                         title = paste("Un total de", signatures, "membres étudiants du CSBQ ont signé la lettre"),
+                         colors = c(nice_palette[c(1,3,5)],"grey"), 
+                         glyph_size = wafflesize, legend_pos = "top"))
+```
+
+## Portrait des répondants
+
+### Membres étudiants actuels du CSBQ
+
+```{r pie chart of time as member and geopoles, echo = FALSE, fig.width=10, fig.align="center"}
+# wrangle data
+time = table(responses[,questions[5]]) %>% as.data.frame() 
+colnames(time) = c("length", "qty")  
+# set answer order for axis
+time$length = factor(time$length, levels = c("< 1 an/year",
+                                             "1 - 2 ans/years","> 2 ans/years"))  
+# plot!
+timeasmember.p = ggplot(data = time) + 
+  geom_bar(aes(x = "", y = qty, fill = length), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Affilié au CSBQ depuis", values = rev(nice_palette[c(1:3)])) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10))
+
+# geopole
+geo = table(responses[,questions[3]]) %>% as.data.frame()
+geo.p = ggplot(data = geo) +
+  geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Géopôle du CSBQ", 
+                    values = c("#e8d525","#7dc449","#00a86e","#008682","#00627c",
+                               "#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10))
+
+# arrange side by side
+geo.p + timeasmember.p
+```
+
+### Anciens membres étudiants du CSBQ
+
+```{r pie chart past members, echo = FALSE, fig.align="left", fig.width = 5}
+# wrangle data
+time = table(responses[,questions[6]]) %>% as.data.frame() 
+colnames(time) = c("length", "qty")  
+# set answer order for axis
+time$length = factor(time$length, levels = c("< 6 mois/months","6 mois/months - 1 an/year",
+                                             "1 - 2 ans/years","> 2 ans/years"))  
+# plot!
+(timeasmember.p = ggplot(data = time) + 
+  geom_bar(aes(x = "", y = qty, fill = length), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Plus affilié au CSBQ depuis", values = c("#7dc449","#00a86e","#008682","#00627c")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10)))
+```
+
+Depuis avoir quitté le CSBQ, nos anciens membres étudiants contribuent de diverses manières à l'avancement de la science de la biodiversité en milieux académiques et professionnels. Voici quelques exemples de rôles actuellement occupés par des anciens membres étudiants du CSBQ:
+
+```{r Q7 wrangle and clean, echo = FALSE}
+
+r7 = na.omit(responses[,questions[7]])
+# change all to lower case
+r7 = apply(r7,2,tolower)
+r7 = as.vector(r7)
+
+# clean up responses - many current students (msc and phd) + post-docs answered this
+r7 = r7[-c(grep("étud", r7, ignore.case = TRUE),
+      grep("etud", r7, ignore.case = TRUE),
+      grep("student", r7, ignore.case = TRUE),
+      grep("phd", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("msc", r7, ignore.case = TRUE),
+      grep("m.sc.", r7, ignore.case = TRUE),
+      grep("maîtrise", r7, ignore.case = TRUE),
+      grep("maitrise", r7, ignore.case = TRUE),
+      grep("thesis", r7, ignore.case = TRUE),
+      grep("thèse", r7, ignore.case = TRUE),
+      grep("doc", r7, ignore.case = TRUE),
+      grep("master", r7, ignore.case = TRUE),
+      grep("postdoc", r7, ignore.case = TRUE),
+      grep("post-doc", r7, ignore.case = TRUE),
+      grep("i have never been a qcbs member", r7, ignore.case = TRUE),
+      grep("still a member!!!", r7, ignore.case = TRUE),
+      grep("rédaction", r7, ignore.case = TRUE))]
+# remove duplicated entry for "professionnel de recherche en phytoprotection"
+r7 = sort(r7[-9])
+# remove extra words
+r7 = gsub("I am doing ", "", r7, ignore.case = TRUE)
+r7 = gsub("I'm an ", "", r7, ignore.case = TRUE)
+r7 = stringr::str_to_sentence(r7, locale = "en")
+r7 = data.frame("Exemples" = r7)
+colnames(r7) = NULL
+# manually count titles
+kable(r7, "html") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+------
+
+## Vision du CSBQ des étudiants / Students' view of the QCBS
+
+### Impact des activités du CSBQ sur nos carrières académiques et professionnelles
+
+```{r stacked barplot Q8_12, echo = FALSE, fig.width = 10, fig.height = 3}
+# Q8_12 qcbs impact on academic career ----
+
+# save subset of columns about this question
+q8_12 = responses[,questions[8:12]]
+
+# make function to set levels order
+impact_levels = function(x) {factor(x, levels = c("Fortement négatif / Strongly negative",
+                                                  "Négatif / Negative",
+                                                  "Neutre / Neutral",
+                                                  "Positif / Positive",
+                                                  "Fortement positif / Strongly positive"))}
+q8_12 <- apply(q8_12, MARGIN = 2, FUN = impact_levels)
+
+# extract main question
+q8_12_question = "Quel impact a eu le CSBQ sur votre parcours académique et/ou votre carrière jusqu'à maintenant? \nWhat impact did the QCBS have on your academic and/or professional career so far?"
+# take it out of each individual question
+colnames(q8_12) = gsub("Quel impact a eu le CSBQ sur votre parcours académique et/ou votre carrière jusqu'à maintenant? / What impact did the QCBS have on your academic and/or professional career so far?", "", colnames(q8_12))
+colnames(q8_12) = gsub("\\[", "", colnames(q8_12))
+colnames(q8_12) = gsub("]", "", colnames(q8_12))
+
+# summarise each one
+rworkshops = as.data.frame(table(q8_12[,1]))
+trainings = as.data.frame(table(q8_12[,2]))
+symposium = as.data.frame(table(q8_12[,3]))
+network = as.data.frame(table(q8_12[,4]))
+leadership = as.data.frame(table(q8_12[,5]))
+# put together in a data frame
+impacts_df = as.data.frame(rbind(rworkshops, trainings, symposium, network, leadership))
+impacts_df$category = c(rep("Ateliers R\nR workshops", each = 4),
+                        rep("Cours et formations\nCourses and trainings",each = 4),
+                        rep("Symposium annuel\nAnnual symposium",each=4),
+                        rep("Réseau de chercheurs\nNetwork of researchers",each=4),
+                        rep("Opportunités de leadership\nLeadership opportunities",each=4))
+impacts_df$Var1 = impact_levels(impacts_df$Var1)
+# do stacked percent barchart
+ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(y = "Proportion of student members (%)", 
+       x = "QCBS activities /\nActivités du CSBQ") +
+  scale_fill_manual(values = c(nice_palette[c(5,3)], nice_palette[c(2,1)]))+
+  theme_classic() +
+  theme(legend.title = element_blank(), legend.text = element_text(size = 10), 
+        axis.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10)) +
+  coord_flip()
+```
+
+Quelques exemples d'impacts **fortement positifs** sur les parcours académiques et/ou les carrières professionnelles des répondants:
+
+```{r q13 exemple impact fortement positif, echo = FALSE}
+# Q13 fortement positif - QCBS activities ----
+q13 = as.data.frame(na.omit(responses[,questions[13]]))
+colnames(q13) = NULL
+kable(q13) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "300px")
+```
+
+------
+
+### L'importance du soutien financier offert par le CSBQ
+
+```{r number of awards, echo = FALSE, fig.align="center", fig.width = 5}
+# wrangle data
+n_awards = table(responses[,questions[15]]) %>% as.data.frame() 
+# set answer order for axis
+n_awards$Var1 = factor(n_awards$Var1, levels = c("0","1","2","3 or more"))  
+# plot!
+(n_awards.p = ggplot(data = n_awards) + 
+  geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Nombre de bourses reçu", values = c("lightgrey","#00a86e","#008682","#00627c")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10)))
+```
+
+
+Une majorité des étudiants **(85%)** sont d'accord ou fortement d'accord que les bourses du CSBQ leur ont permis d'accéder à des opportunités qui seraient **autrement impossibles**.
+
+```{r awards for opportunities, echo = FALSE, fig.width = 10, fig.height = 2}
+awards = as.data.frame(table(responses[,questions[17]]))
+missinglevels = data.frame(Var1 = factor(2), Freq = 0)
+awards = rbind(missinglevels, awards)
+awards$Var1 = c("Désaccord / Disagree", "Fort désaccord / Strongly disagree", "Neutre / Neutral", "D'accord / Agree", "Fortement d'accord / Strongly agree")
+awards$Var1 = factor(awards$Var1, levels = c("Fort désaccord / Strongly disagree", "Désaccord / Disagree", "Neutre / Neutral", "D'accord / Agree", "Fortement d'accord / Strongly agree"))
+
+perc_award = sum(awards$Freq[c(4,5)])/sum(awards$Freq)*100
+                     
+(awards.p = ggplot(awards, aes(x = "", y = Freq)) + 
+    geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", position = "fill") +
+    labs(x = "", y = "") +
+    coord_flip() +
+    scale_fill_manual(values = rev(nice_palette)) +
+    theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
+```
+
+------
+
+### Développement de chercheur(e)s
+
+La majorité des étudiants **(93.8%)** évaluent que le CSBQ a eu un impact positif ou fortement positif sur leur développement en tant que chercheur(e).
+
+```{r barplot Q14 impact on development as researcher, echo = FALSE, fig.width = 10, fig.height = 2}
+# Q14 impact on development as researcher ----
+resdev = as.data.frame(table(responses[,questions[14]]))
+missinglevels = data.frame(Var1 = factor(c(1,2)), Freq = c(0,0))
+resdev = rbind(missinglevels, resdev)
+resdev$Var1 = c("Fortement négatif / Strongly negative",
+                "Négatif / Negative",
+                "Neutre / Neutral",
+                "Positif / Positive",
+                "Fortement positif / Strongly positive")
+resdev$Var1 = impact_levels(resdev$Var1)
+
+perc_resdes = sum(resdev$Freq[c(4,5)])/sum(resdev$Freq)*100
+
+(resdev.p = ggplot(resdev, aes(x = "", y = Freq, fill = Var1)) + 
+  geom_bar(stat = "identity", position = "fill") +
+  labs(x = "", y = "Proportion of student members (%)")+
+  coord_flip() +
+  scale_fill_manual(values = rev(nice_palette)) +
+  theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
+```
+
+------
+
+
+## Ce que le CSBQ apporte aux étudiants
+
+```{r table of what we gain from QCBS, echo = FALSE}
+# Q19 gains from QCBS ----
+q19 = as.data.frame(na.omit(responses[,questions[19]]))
+colnames(q19) = NULL
+kable(q19) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+------
+
+## Le CSBQ résumé en 3 mots par étudiant
+
+```{r wordcloud, echo = FALSE, fig.width = 10, message=FALSE}
+# Q18 qcbs in 3 words ----
+
+# 1. wrangle
+
+# extract responses
+r18 = na.omit(responses[,questions[18]])
+names(r18) = "response"
+# format as tibble
+r18_tbl = as_tibble(r18)
+# split text into tokens
+r18_tokens = r18_tbl %>% unnest_tokens(word, response)
+
+# 2. clean
+
+# remove stop words (english)
+r18_nostops_eng = anti_join(r18_tokens, stop_words, by = c("word" = "word"))
+# import stop words (french)
+stop_words_fr = read_csv("~/Documents/GitHub/qcbs_surveyresults/data/stopwords-fr.txt", col_names = FALSE)
+# source: https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/master/stopwords-fr.txt
+colnames(stop_words_fr) = "word"
+# remove french stop words from remaining list of responses
+r18_nostops_fr = anti_join(r18_nostops_eng, stop_words_fr, by = c("word" = "word"))
+
+# 3. wrangle into data frame for plotting
+r18_freqs = sort(table(r18_nostops_fr), decreasing = TRUE)
+r18_freqs_df = as.data.frame(r18_freqs)
+colnames(r18_freqs_df) = "word"
+
+# 4. plot as wordcloud
+wordcloud2(r18_freqs_df, color = nice_palette[1])
+```
+
+
