@@ -29,7 +29,8 @@ Le CSBQ contribue à faire du Québec un chef de file en alliant Science et Poli
 
  C’est pour l'ensemble des raisons mentionnées ci-dessus que nous demandons le maintien du support financier du programme de regroupements stratégiques du FRQNT envers le CSBQ.
  
- 
+------
+
  
 ## Letter of support to the QCBS [EN]
 
@@ -53,15 +54,19 @@ The QCBS is providing leadership, both nationally and internationally, by bridgi
 
 It is for all of the above-mentioned reasons that we urge the strategic cluster program of the FRQNT to continue its funding for the QCBS.
 
+------
 
 ```{r load packages and survey results, include = FALSE}
 # load packages
 require(tidyverse)
 require(waffle)
 require(extrafont)
+require(patchwork)
 require(ggsci)
 require(tidytext)
 require(wordcloud2)
+require(knitr)
+require(kableExtra)
 
 # import survey responses
 responses <- read_csv("~/Documents/GitHub/qcbs_surveyresults/data/responses.csv")
@@ -83,7 +88,7 @@ fonts()[grep("Awesome", fonts())]
 loadfonts()
 ```
 
-```{r, echo = FALSE, fig.width = 10}
+```{r, echo = FALSE, fig.width = 10, message=FALSE}
 ## Q4 level of study ----
 signatures = unname(table(responses[,questions[20]]))
 studylevels = as.data.frame(table(responses[,questions[4]]))
@@ -93,11 +98,106 @@ temp = t(rbind(studylevels, missingsignatures))
 studylevels = as.numeric(temp[2,])
 names(studylevels) = temp[1,]
 (levelofstudy.p = waffle(studylevels, rows = wafflerows, use_glyph = "male",
-                         title = paste("La lettre est signée par", signatures, "membres étudiants du CSBQ"),
+                         title = paste("Un total de", signatures, "membres étudiants du CSBQ ont signé la lettre"),
                          colors = c(nice_palette[c(1,3,5)],"grey"), 
                          glyph_size = wafflesize, legend_pos = "top"))
 ```
 
+## Portrait des répondants
+
+### Membres étudiants actuels du CSBQ
+
+```{r pie chart of time as member and geopoles, echo = FALSE, fig.width=10, fig.align="center"}
+# wrangle data
+time = table(responses[,questions[5]]) %>% as.data.frame() 
+colnames(time) = c("length", "qty")  
+# set answer order for axis
+time$length = factor(time$length, levels = c("< 1 an/year",
+                                             "1 - 2 ans/years","> 2 ans/years"))  
+# plot!
+timeasmember.p = ggplot(data = time) + 
+  geom_bar(aes(x = "", y = qty, fill = length), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Affilié au CSBQ depuis", values = rev(nice_palette[c(1:3)])) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10))
+
+# geopole
+geo = table(responses[,questions[3]]) %>% as.data.frame()
+geo.p = ggplot(data = geo) +
+  geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Géopôle du CSBQ", 
+                    values = c("#e8d525","#7dc449","#00a86e","#008682","#00627c",
+                               "#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10))
+
+# arrange side by side
+geo.p + timeasmember.p
+```
+
+### Anciens membres étudiants du CSBQ
+
+```{r pie chart past members, echo = FALSE, fig.align="left", fig.width = 5}
+# wrangle data
+time = table(responses[,questions[6]]) %>% as.data.frame() 
+colnames(time) = c("length", "qty")  
+# set answer order for axis
+time$length = factor(time$length, levels = c("< 6 mois/months","6 mois/months - 1 an/year",
+                                             "1 - 2 ans/years","> 2 ans/years"))  
+# plot!
+(timeasmember.p = ggplot(data = time) + 
+  geom_bar(aes(x = "", y = qty, fill = length), stat = "identity", width = 1) +
+  coord_polar("y", start=0) +
+  scale_fill_manual(name = "Plus affilié au CSBQ depuis", values = c("#7dc449","#00a86e","#008682","#00627c")) +
+  theme_void() +
+  theme(legend.title = element_text(size = 13, face = "bold"), legend.text = element_text(size = 10)))
+```
+
+Depuis avoir quitté le CSBQ, nos anciens membres étudiants contribuent de diverses manières à l'avancement de la science de la biodiversité en milieux académiques et professionnels. Voici quelques exemples de rôles actuellement occupés par des anciens membres étudiants du CSBQ:
+
+```{r Q7 wrangle and clean, echo = FALSE}
+
+r7 = na.omit(responses[,questions[7]])
+# change all to lower case
+r7 = apply(r7,2,tolower)
+r7 = as.vector(r7)
+
+# clean up responses - many current students (msc and phd) + post-docs answered this
+r7 = r7[-c(grep("étud", r7, ignore.case = TRUE),
+      grep("etud", r7, ignore.case = TRUE),
+      grep("student", r7, ignore.case = TRUE),
+      grep("phd", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("ph.d", r7, ignore.case = TRUE),
+      grep("msc", r7, ignore.case = TRUE),
+      grep("m.sc.", r7, ignore.case = TRUE),
+      grep("maîtrise", r7, ignore.case = TRUE),
+      grep("maitrise", r7, ignore.case = TRUE),
+      grep("thesis", r7, ignore.case = TRUE),
+      grep("thèse", r7, ignore.case = TRUE),
+      grep("doc", r7, ignore.case = TRUE),
+      grep("master", r7, ignore.case = TRUE),
+      grep("postdoc", r7, ignore.case = TRUE),
+      grep("post-doc", r7, ignore.case = TRUE),
+      grep("i have never been a qcbs member", r7, ignore.case = TRUE),
+      grep("still a member!!!", r7, ignore.case = TRUE),
+      grep("rédaction", r7, ignore.case = TRUE))]
+# remove duplicated entry for "professionnel de recherche en phytoprotection"
+r7 = sort(r7[-9])
+# remove extra words
+r7 = gsub("I am doing ", "", r7, ignore.case = TRUE)
+r7 = gsub("I'm an ", "", r7, ignore.case = TRUE)
+r7 = stringr::str_to_sentence(r7, locale = "en")
+r7 = data.frame("Exemples" = r7)
+colnames(r7) = NULL
+# manually count titles
+kable(r7, "html") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+------
 
 ## Vision du CSBQ des étudiants / Students' view of the QCBS
 
@@ -142,16 +242,30 @@ impacts_df$Var1 = impact_levels(impacts_df$Var1)
 ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) + 
   geom_bar(position="fill", stat="identity") +
   labs(y = "Proportion of student members (%)", 
-       x = "QCBS activities / Activités du CSBQ") +
+       x = "QCBS activities /\nActivités du CSBQ") +
   scale_fill_manual(values = c(nice_palette[c(5,3)], nice_palette[c(2,1)]))+
   theme_classic() +
-  theme(legend.title = element_blank()) +
+  theme(legend.title = element_blank(), legend.text = element_text(size = 10), 
+        axis.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10)) +
   coord_flip()
 ```
 
+Quelques exemples d'impacts **fortement positifs** sur les parcours académiques et/ou les carrières professionnelles des répondants:
+
+```{r q13 exemple impact fortement positif, echo = FALSE}
+# Q13 fortement positif - QCBS activities ----
+q13 = as.data.frame(na.omit(responses[,questions[13]]))
+colnames(q13) = NULL
+kable(q13) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "300px")
+```
+
+------
+
 ### L'importance du soutien financier offert par le CSBQ
 
-Une majorité des étudiants (85%) sont d'accord ou fortement d'accord que les bourses du CSBQ leur ont permis d'accéder à des opportunités qui seraient **autrement impossibles**.
+Une majorité des étudiants **(85%)** sont d'accord ou fortement d'accord que les bourses du CSBQ leur ont permis d'accéder à des opportunités qui seraient **autrement impossibles**.
 
 ```{r awards for opportunities, echo = FALSE, fig.width = 10, fig.height = 2}
 awards = as.data.frame(table(responses[,questions[17]]))
@@ -170,10 +284,11 @@ perc_award = sum(awards$Freq[c(4,5)])/sum(awards$Freq)*100
     theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
 ```
 
+------
 
 ### Développement de chercheur(e)s
 
-La majorité des étudiants (93.8%) évaluent que le CSBQ a eu un impact positif ou fortement positif sur leur développement en tant que chercheur(e).
+La majorité des étudiants **(93.8%)** évaluent que le CSBQ a eu un impact positif ou fortement positif sur leur développement en tant que chercheur(e).
 
 ```{r barplot Q14 impact on development as researcher, echo = FALSE, fig.width = 10, fig.height = 2}
 # Q14 impact on development as researcher ----
@@ -197,13 +312,24 @@ perc_resdes = sum(resdev$Freq[c(4,5)])/sum(resdev$Freq)*100
   theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
 ```
 
-## Ce que le CSBQ nous apporte
+------
 
 
+## Ce que le CSBQ apporte aux étudiants
+
+```{r table of what we gain from QCBS, echo = FALSE}
+# Q19 gains from QCBS ----
+q19 = as.data.frame(na.omit(responses[,questions[19]]))
+colnames(q19) = NULL
+kable(q19) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  scroll_box(width = "100%", height = "500px")
+```
+
+------
 
 ## Le CSBQ résumé en 3 mots par étudiant
 
-```{r wordcloud, echo = FALSE, fig.width = 10}
+```{r wordcloud, echo = FALSE, fig.width = 10, message=FALSE}
 # Q18 qcbs in 3 words ----
 
 # 1. wrangle
@@ -235,3 +361,5 @@ colnames(r18_freqs_df) = "word"
 # 4. plot as wordcloud
 wordcloud2(r18_freqs_df, color = nice_palette[1])
 ```
+
+
