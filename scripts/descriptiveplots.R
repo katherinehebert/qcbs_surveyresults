@@ -5,9 +5,8 @@ require(tidyverse)
 require(waffle)
 require(extrafont)
 require(ggsci)
-require(wordcloud2)
-
-# note: percentages?
+require(tidytext)
+require(wordcloud)
 
 # import survey responses
 responses <- read_csv("Documents/GitHub/qcbs_surveyresults/data/responses.csv")
@@ -28,7 +27,7 @@ font_import()
 fonts()[grep("Awesome", fonts())]
 loadfonts()
 
-## signatures ----
+## Q20 signatures ----
 
 # summarise results
 signatures = unname(table(responses[,questions[20]]))
@@ -37,7 +36,7 @@ waffle(signatures, rows = wafflerows, use_glyph = "male",
          colors = c("#15105c"), 
          size = wafflesize, legend_pos = "none")
 
-## level of study ----
+## Q4 level of study ----
 studylevels = as.data.frame(table(responses[,questions[4]]))
 missingsignatures = data.frame(Var1 = factor("Other"), 
                                Freq = c(signatures - sum(studylevels$Freq)))
@@ -49,7 +48,7 @@ names(studylevels) = temp[1,]
                          colors = c(nice_palette[c(1,3,5)],"grey"), 
                          glyph_size = wafflesize))
 
-## time as member ----
+## Q5 time as member ----
 
 # wrangle data
 time = table(responses[,questions[5]]) %>% as.data.frame() 
@@ -65,7 +64,7 @@ time$length = factor(time$length, levels = c("< 1 an/year",
                     scale_fill_manual(values = nice_palette) +
                     theme_classic())
 
-## time since member ----
+## Q6 time since member ----
 
 # wrangle data
 time = table(responses[,questions[6]]) %>% as.data.frame() 
@@ -82,7 +81,7 @@ time$length = factor(time$length, levels = c("< 6 mois/months","6 mois/months - 
     theme_classic())
 
   
-# qcbs impact on academic career ----
+# Q8_12 qcbs impact on academic career ----
 
 # save subset of columns about this question
 q8_12 = responses[,questions[8:12]]
@@ -127,7 +126,7 @@ ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) +
   theme(legend.title = element_blank()) +
   coord_flip()
 
-# impact on development as researcher ----
+# Q14 impact on development as researcher ----
 
 resdev = as.data.frame(table(responses[,questions[14]]))
 missinglevels = data.frame(Var1 = factor(c(1,2)), Freq = c(0,0))
@@ -141,7 +140,7 @@ ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) +
     scale_fill_manual(values = rev(nice_palette)) +
     theme_classic() + theme(legend.position = "none"))
 
-# awards making opportunities accessible ----
+# Q17 awards making opportunities accessible ----
 
 awards = as.data.frame(table(responses[,questions[17]]))
 missinglevels = data.frame(Var1 = factor(2), Freq = 0)
@@ -155,14 +154,8 @@ awards$Var1 = factor(awards$Var1, levels = c("1", "2", "3", "4", "5"))
     scale_fill_manual(values = rev(nice_palette)) +
     theme_classic() + theme(legend.position = "none"))
 
-# questions to deal with:
-na.omit(responses[,questions[7]])
-na.omit(responses[,questions[13]])
-na.omit(responses[,questions[16]])
-na.omit(responses[,questions[18]])
-na.omit(responses[,questions[19]])
 
-# what are you doing now ----
+# Q7 what are you doing now ----
 
 r7 = na.omit(responses[,questions[7]])
 # change all to lower case
@@ -191,9 +184,48 @@ r7 = r7[-c(grep("étud", r7, ignore.case = TRUE),
       grep("rédaction", r7, ignore.case = TRUE))]
 # remove duplicated entry for "professionnel de recherche en phytoprotection"
 r7 = r7[-9]
-# plot as word cloud
-r7_df = as.data.frame(table(r7))
-wordcloud2(r7_df)
+knitr::kable(r7) # for markdown!
 
+# Q19 gains from QCBS ----
+knitr::kable(na.omit(responses[,questions[19]]))
+
+# Q13 fortement positif - QCBS activities ----
+knitr::kable(na.omit(responses[,questions[13]]))
+
+# Q18 qcbs in 3 words ----
+
+# 1. wrangle
+
+# extract responses
+r18 = na.omit(responses[,questions[18]])
+names(r18) = "response"
+# format as tibble
+r18_tbl = as_tibble(r18)
+# split text into tokens
+r18_tokens = r18_tbl %>% unnest_tokens(word, response)
+
+# 2. clean
+
+# remove stop words (english)
+r18_nostops_eng = anti_join(r18_tokens, stop_words, by = c("word" = "word"))
+# import stop words (french)
+stop_words_fr = read_csv("~/Documents/GitHub/qcbs_surveyresults/data/stopwords-fr.txt", col_names = FALSE)
+# source: https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/master/stopwords-fr.txt
+colnames(stop_words_fr) = "word"
+# remove french stop words from remaining list of responses
+r18_nostops_fr = anti_join(r18_nostops_eng, stop_words_fr, by = c("word" = "word"))
+
+# 3. wrangle into data frame for plotting
+r18_freqs = sort(table(r18_nostops_fr), decreasing = TRUE)
+r18_freqs_df = as.data.frame(r18_freqs)
+colnames(r18_freqs_df) = "word"
+
+# 4. plot as wordcloud
+wordcloud2(r18_freqs_df, color = "black")
+
+# Q16 - bourses
+
+# questions to deal with:
+knitr::kable(na.omit(responses[,questions[16]]))
 
 
