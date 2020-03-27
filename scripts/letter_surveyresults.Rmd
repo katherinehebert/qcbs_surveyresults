@@ -61,7 +61,7 @@ require(waffle)
 require(extrafont)
 require(ggsci)
 require(tidytext)
-require(wordcloud)
+require(wordcloud2)
 
 # import survey responses
 responses <- read_csv("~/Documents/GitHub/qcbs_surveyresults/data/responses.csv")
@@ -71,7 +71,7 @@ questions <- colnames(responses)
 
 ```{r set up plot parameters and font, include = FALSE}
 # set plotting parameters
-wafflerows = 12
+wafflerows = 9
 wafflesize = 7
 nice_palette = c("#20115c","#7f0066","#c81b58","#f45e3a","#ffa600")
 
@@ -83,7 +83,7 @@ fonts()[grep("Awesome", fonts())]
 loadfonts()
 ```
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.width = 10}
 ## Q4 level of study ----
 signatures = unname(table(responses[,questions[20]]))
 studylevels = as.data.frame(table(responses[,questions[4]]))
@@ -101,7 +101,7 @@ names(studylevels) = temp[1,]
 
 ## Vision du CSBQ des étudiants / Students' view of the QCBS
 
-### Impact sur nos carrières académiques et professionnelles
+### Impact des activités du CSBQ sur nos carrières académiques et professionnelles
 
 ```{r stacked barplot Q8_12, echo = FALSE, fig.width = 10, fig.height = 3}
 # Q8_12 qcbs impact on academic career ----
@@ -149,8 +149,32 @@ ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) +
   coord_flip()
 ```
 
+### L'importance du soutien financier offert par le CSBQ
 
-### L’influence du CSBQ sur notre développement en tant que chercheur(e)
+Une majorité des étudiants (85%) sont d'accord ou fortement d'accord que les bourses du CSBQ leur ont permis d'accéder à des opportunités qui seraient **autrement impossibles**.
+
+```{r awards for opportunities, echo = FALSE, fig.width = 10, fig.height = 2}
+awards = as.data.frame(table(responses[,questions[17]]))
+missinglevels = data.frame(Var1 = factor(2), Freq = 0)
+awards = rbind(missinglevels, awards)
+awards$Var1 = c("Désaccord / Disagree", "Fort désaccord / Strongly disagree", "Neutre / Neutral", "D'accord / Agree", "Fortement d'accord / Strongly agree")
+awards$Var1 = factor(awards$Var1, levels = c("Fort désaccord / Strongly disagree", "Désaccord / Disagree", "Neutre / Neutral", "D'accord / Agree", "Fortement d'accord / Strongly agree"))
+
+perc_award = sum(awards$Freq[c(4,5)])/sum(awards$Freq)*100
+                     
+(awards.p = ggplot(awards, aes(x = "", y = Freq)) + 
+    geom_bar(aes(x = "", y = Freq, fill = Var1), stat = "identity", position = "fill") +
+    labs(x = "", y = "") +
+    coord_flip() +
+    scale_fill_manual(values = rev(nice_palette)) +
+    theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
+```
+
+
+### Développement de chercheur(e)s
+
+La majorité des étudiants (93.8%) évaluent que le CSBQ a eu un impact positif ou fortement positif sur leur développement en tant que chercheur(e).
+
 ```{r barplot Q14 impact on development as researcher, echo = FALSE, fig.width = 10, fig.height = 2}
 # Q14 impact on development as researcher ----
 resdev = as.data.frame(table(responses[,questions[14]]))
@@ -162,6 +186,9 @@ resdev$Var1 = c("Fortement négatif / Strongly negative",
                 "Positif / Positive",
                 "Fortement positif / Strongly positive")
 resdev$Var1 = impact_levels(resdev$Var1)
+
+perc_resdes = sum(resdev$Freq[c(4,5)])/sum(resdev$Freq)*100
+
 (resdev.p = ggplot(resdev, aes(x = "", y = Freq, fill = Var1)) + 
   geom_bar(stat = "identity", position = "fill") +
   labs(x = "", y = "Proportion of student members (%)")+
@@ -170,4 +197,41 @@ resdev$Var1 = impact_levels(resdev$Var1)
   theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
 ```
 
+## Ce que le CSBQ nous apporte
 
+
+
+## Le CSBQ résumé en 3 mots par étudiant
+
+```{r wordcloud, echo = FALSE, fig.width = 10}
+# Q18 qcbs in 3 words ----
+
+# 1. wrangle
+
+# extract responses
+r18 = na.omit(responses[,questions[18]])
+names(r18) = "response"
+# format as tibble
+r18_tbl = as_tibble(r18)
+# split text into tokens
+r18_tokens = r18_tbl %>% unnest_tokens(word, response)
+
+# 2. clean
+
+# remove stop words (english)
+r18_nostops_eng = anti_join(r18_tokens, stop_words, by = c("word" = "word"))
+# import stop words (french)
+stop_words_fr = read_csv("~/Documents/GitHub/qcbs_surveyresults/data/stopwords-fr.txt", col_names = FALSE)
+# source: https://raw.githubusercontent.com/stopwords-iso/stopwords-fr/master/stopwords-fr.txt
+colnames(stop_words_fr) = "word"
+# remove french stop words from remaining list of responses
+r18_nostops_fr = anti_join(r18_nostops_eng, stop_words_fr, by = c("word" = "word"))
+
+# 3. wrangle into data frame for plotting
+r18_freqs = sort(table(r18_nostops_fr), decreasing = TRUE)
+r18_freqs_df = as.data.frame(r18_freqs)
+colnames(r18_freqs_df) = "word"
+
+# 4. plot as wordcloud
+wordcloud2(r18_freqs_df, color = nice_palette[1])
+```
