@@ -88,9 +88,10 @@ q8_12 = responses[,questions[8:12]]
 
 # make function to set levels order
 impact_levels = function(x) {factor(x, levels = c("Fortement négatif / Strongly negative",
-                                 "Neutre / Neutral",
-                                 "Positif / Positive",
-                                 "Fortement positif / Strongly positive"))}
+                                                  "Négatif / Negative",
+                                                  "Neutre / Neutral",
+                                                  "Positif / Positive",
+                                                  "Fortement positif / Strongly positive"))}
 q8_12 <- apply(q8_12, MARGIN = 2, FUN = impact_levels)
 
 # extract main question
