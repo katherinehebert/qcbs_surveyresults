@@ -1,5 +1,5 @@
 ---
-title: <center> <h1>Soutien étudiant au CSBQ<br>Student support for the QCBS</h1> </center>
+title: <center> <h1>Soutien étudiant au Centre de la Science de la Biodiversité du Québec (CSBQ)</h1> </center>
 output: html_document
 ---
 
@@ -89,6 +89,8 @@ fonts()[grep("Awesome", fonts())]
 loadfonts()
 ```
 
+<br>
+
 ```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.width = 8, fig.height = 6, fig.align="center"}
 ## Q4 level of study ----
 signatures = nrow(responses)
@@ -108,7 +110,7 @@ names(studylevels) = temp[1,]
 
 ### Membres étudiants actuels du CSBQ
 
-```{r pie chart of time as member and geopoles, echo = FALSE, fig.width=10, fig.align="center"}
+```{r pie chart of time as member and geopoles, echo = FALSE, fig.width=10, fig.align="center", strip.white=TRUE}
 # wrangle data
 time = table(responses[,questions[5]]) %>% as.data.frame() 
 colnames(time) = c("length", "qty")  
@@ -140,7 +142,7 @@ geo.p + timeasmember.p
 
 ### Anciens membres étudiants du CSBQ
 
-```{r pie chart past members, echo = FALSE, fig.align="left", fig.width = 5}
+```{r pie chart past members, echo = FALSE, fig.align="left", fig.width = 5,fig.height = 4, strip.white=TRUE}
 # wrangle data
 time = table(responses[,questions[6]]) %>% as.data.frame() 
 colnames(time) = c("length", "qty")  
@@ -197,10 +199,14 @@ colnames(r7) = NULL
 kable(r7, "html") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
   scroll_box(width = "100%", height = "500px")
 ```
+<br>
+<br>
 
 ------
 
-## Vision du CSBQ des étudiants / Students' view of the QCBS
+## Vision du CSBQ des étudiants
+
+<br>
 
 ### Impact des activités du CSBQ sur nos carrières académiques et professionnelles
 
@@ -261,6 +267,8 @@ colnames(q13) = NULL
 kable(q13) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
   scroll_box(width = "100%", height = "300px")
 ```
+<br>
+<br>
 
 ------
 
@@ -302,6 +310,8 @@ perc_award = sum(awards$Freq[c(4,5)])/sum(awards$Freq)*100
     scale_fill_manual(values = rev(nice_palette)) +
     theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
 ```
+<br>
+<br>
 
 ------
 
@@ -330,6 +340,8 @@ perc_resdes = sum(resdev$Freq[c(4,5)])/sum(resdev$Freq)*100
   scale_fill_manual(values = rev(nice_palette)) +
   theme_classic() + theme(legend.position = "top", legend.title = element_blank()))
 ```
+<br>
+<br>
 
 ------
 
@@ -343,6 +355,8 @@ colnames(q19) = NULL
 kable(q19) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
   scroll_box(width = "100%", height = "500px")
 ```
+<br>
+<br>
 
 ------
 
