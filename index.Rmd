@@ -89,7 +89,7 @@ fonts()[grep("Awesome", fonts())]
 loadfonts()
 ```
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.width = 9, fig.height = 6}
+```{r, echo = FALSE, message=FALSE, warning=FALSE, fig.width = 8, fig.height = 6, fig.align="center"}
 ## Q4 level of study ----
 signatures = nrow(responses)
 studylevels = as.data.frame(table(responses[,questions[4]]))
