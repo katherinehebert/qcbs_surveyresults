@@ -222,7 +222,6 @@ impact_levels = function(x) {factor(x, levels = c("Fortement négatif / Strongly
                                                   "Neutre / Neutral",
                                                   "Positif / Positive",
                                                   "Fortement positif / Strongly positive"))}
-#q8_12 <- apply(q8_12, MARGIN = 2, FUN = impact_levels)
 
 # extract main question
 q8_12_question = "Quel impact a eu le CSBQ sur votre parcours académique et/ou votre carrière jusqu'à maintenant? \nWhat impact did the QCBS have on your academic and/or professional career so far?"
@@ -244,23 +243,23 @@ impacts_df$category = c(rep("Ateliers R\nR workshops", each = 4),
                         rep("Symposium annuel\nAnnual symposium",each=4),
                         rep("Réseau de chercheurs\nNetwork of researchers",each=4),
                         rep("Opportunités de leadership\nLeadership opportunities",each=4))
-impacts_df$Var1 = factor(impacts_df$Var1, levels = c("Fortement positif / Strongly positive",
+impacts_df$Var1 = factor(impacts_df$Var1, levels = rev(c("Fortement positif / Strongly positive",
                                                      "Positif / Positive", 
                                                      "Neutre / Neutral",
                                                      "Negative / Négatif",
                                                      "Fortement négatif / Strongly negative",
-                                                     "Ne s'applique pas / Does not apply"))
+                                                     "Ne s'applique pas / Does not apply")))
 # do stacked percent barchart
 ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) + 
   geom_bar(position="fill", stat="identity") +
   labs(y = "Proportion of student members (%)", 
        x = "QCBS activities /\nActivités du CSBQ") +
-  scale_fill_manual(values = c(nice_palette[1:3], "lightgrey"))+
+  scale_fill_manual(values = rev(c(nice_palette[1:3], "lightgrey")))+
   theme_classic() +
   theme(legend.title = element_blank(), legend.text = element_text(size = 10), legend.position = "top",
         axis.title = element_text(size = 12, face = "bold"),
         axis.text = element_text(size = 10)) +
-  coord_flip() + scale_y_reverse()
+  coord_flip()
 ```
 
 Quelques exemples d'impacts **fortement positifs** sur les parcours académiques et/ou les carrières professionnelles des répondants:
