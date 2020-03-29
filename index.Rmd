@@ -222,7 +222,7 @@ impact_levels = function(x) {factor(x, levels = c("Fortement négatif / Strongly
                                                   "Neutre / Neutral",
                                                   "Positif / Positive",
                                                   "Fortement positif / Strongly positive"))}
-q8_12 <- apply(q8_12, MARGIN = 2, FUN = impact_levels)
+#q8_12 <- apply(q8_12, MARGIN = 2, FUN = impact_levels)
 
 # extract main question
 q8_12_question = "Quel impact a eu le CSBQ sur votre parcours académique et/ou votre carrière jusqu'à maintenant? \nWhat impact did the QCBS have on your academic and/or professional career so far?"
@@ -244,18 +244,23 @@ impacts_df$category = c(rep("Ateliers R\nR workshops", each = 4),
                         rep("Symposium annuel\nAnnual symposium",each=4),
                         rep("Réseau de chercheurs\nNetwork of researchers",each=4),
                         rep("Opportunités de leadership\nLeadership opportunities",each=4))
-impacts_df$Var1 = impact_levels(impacts_df$Var1)
+impacts_df$Var1 = factor(impacts_df$Var1, levels = c("Fortement positif / Strongly positive",
+                                                     "Positif / Positive", 
+                                                     "Neutre / Neutral",
+                                                     "Negative / Négatif",
+                                                     "Fortement négatif / Strongly negative",
+                                                     "Ne s'applique pas / Does not apply"))
 # do stacked percent barchart
 ggplot(impacts_df, aes(fill=Var1, y=Freq, x=category)) + 
   geom_bar(position="fill", stat="identity") +
   labs(y = "Proportion of student members (%)", 
        x = "QCBS activities /\nActivités du CSBQ") +
-  scale_fill_manual(values = c(nice_palette[c(5,3)], nice_palette[c(2,1)]))+
+  scale_fill_manual(values = c(nice_palette[1:3], "lightgrey"))+
   theme_classic() +
   theme(legend.title = element_blank(), legend.text = element_text(size = 10), legend.position = "top",
         axis.title = element_text(size = 12, face = "bold"),
         axis.text = element_text(size = 10)) +
-  coord_flip()
+  coord_flip() + scale_y_reverse()
 ```
 
 Quelques exemples d'impacts **fortement positifs** sur les parcours académiques et/ou les carrières professionnelles des répondants:
@@ -362,7 +367,7 @@ kable(q19) %>% kable_styling(bootstrap_options = c("striped", "hover", "condense
 
 ## Le CSBQ résumé en 3 mots par étudiant
 
-```{r wordcloud, echo = FALSE, fig.width = 10, message=FALSE}
+```{r wordcloud, echo = FALSE, fig.width = 10, fig.height = 7, message=FALSE}
 # Q18 qcbs in 3 words ----
 
 # 1. wrangle
@@ -390,6 +395,9 @@ r18_nostops_fr = anti_join(r18_nostops_eng, stop_words_fr, by = c("word" = "word
 r18_freqs = sort(table(r18_nostops_fr), decreasing = TRUE)
 r18_freqs_df = as.data.frame(r18_freqs)
 colnames(r18_freqs_df) = "word"
+
+# remove "inaccessible"
+r18_freqs_df = r18_freqs_df[-grep("inaccessible", r18_freqs_df[,1]),]
 
 # 4. plot as wordcloud
 wordcloud2(r18_freqs_df, color = nice_palette[1])
